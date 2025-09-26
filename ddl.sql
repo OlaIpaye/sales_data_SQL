@@ -36,8 +36,21 @@ WHERE sale_id = 106;
 -- SELECT *
 -- FROM products;
 
+
 -- DCL - Data Control Language
--- 
+-- create local user to access the database
+CREATE USER 'local_user'@'localhost' IDENTIFIED BY 'Ola12345';
+
+-- grant permission to local user
+GRANT SELECT, INSERT ON sales_data.* TO 'local_user'@'localhost';
+
+FLUSH PRIVILEGES; -- Apply changes to the user access
+
+-- revoke permission to the user
+REVOKE INSERT ON sales_data.* FROM 'local_user'@'localhost';
+
+
+
 
 
 
