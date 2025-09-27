@@ -95,5 +95,16 @@ WHERE p.product_name = 'iPhone 16 Pro';
 
 
 
+-- Find the Nth highest value
+SELECT p.product_id, p.product_name, SUM(s.quantity) AS total_sold
+FROM products p
+INNER JOIN sales s
+ON p.product_id = s.product_id
+GROUP BY p.product_id, p.product_name
+ORDER BY total_sold DESC
+LIMIT 1 OFFSET 1;  -- skip the first row (highest), return the second row
+
+
+
 
 
